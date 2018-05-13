@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">LoveMeter</string>
+    <string name="log_in">Log In</string>
+    <string name="btn_take_photo">Take A Photo</string>
+    <string name="btn_pickAPhoto" />
+    <string name="first_name">First Name</string>
+    <string name="second_name">Second Name</string>
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="btn_pickaPhoto">Pick A Photo</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="btnTestAFriend">Test A Friend</string>
+    <string name="btnCheckYourBoard">Check Your Board</string>
+    <string name="btnAddToTest">Add To Test</string>
+    <string name="btnAddQuestion">ADD QUESTION</string>
+    <string name="addLastQuestion">ADD LAST QUESTION</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+</resources>

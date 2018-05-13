@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "556407629308",
+    "firebase_url": "https://lovemeter-1b5fa.firebaseio.com",
+    "project_id": "lovemeter-1b5fa",
+    "storage_bucket": "lovemeter-1b5fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:556407629308:android:91db173525819fdc",
+        "android_client_info": {
+          "package_name": "com.example.android.lovemeter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "556407629308-40pfbph6l6u9utsebvebnm2u4489ht8v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.lovemeter",
+            "certificate_hash": "884c676b40cb39001cec0a5a43d472a0ef852944"
+          }
+        },
+        {
+          "client_id": "556407629308-irrddpf8movaug25s7v12tnqcaug9in8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYnREk5RDcid6vupEXweDldXf8Yog2pdk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "556407629308-irrddpf8movaug25s7v12tnqcaug9in8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
