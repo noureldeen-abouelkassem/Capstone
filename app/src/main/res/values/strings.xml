@@ -36,4 +36,9 @@
     <string name="waittouploadimage">Wait to upload the Image</string>
     <string name="youshouldprovidequestionandanswer">You should provide a question and an answer</string>
     <string name="usernameorpasswordiswrong">username or password is wrong</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="answer">Answer</string>
+    <string name="youaredone">You Are Done Go Back And Choose Another Friend Or Check Your Board ^_^</string>
+    <string name="no_tests_for_you">No tests for you</string>
 </resources>

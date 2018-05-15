@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="User Name"
+        android:hint="@string/user_name"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/main_activity_et_password"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/main_activity_logo" />
 
     <EditText
-        android:hint="Password"
+        android:hint="@string/password"
         android:id="@+id/main_activity_et_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
