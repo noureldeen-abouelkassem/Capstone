@@ -120,7 +120,7 @@ public class TestActivity extends AppCompatActivity {
     @OnClick(R.id.btnAddToTest)
     public void onViewClicked() {
         if ((etTestText.getText().toString().isEmpty()) || ((!rbYes.isChecked()) && (!rbNo.isChecked()))) {
-            Toast.makeText(this, "You should provide a question and an answer", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.youshouldprovidequestionandanswer, Toast.LENGTH_SHORT).show();
         } else {
             if (getCounter() < 9) {
                 stringAnswerModelMap.put(String.valueOf(getCounter()), new QuestionModel(etTestText.getText().toString(),rbYes.isChecked() ? "1" : "0"));

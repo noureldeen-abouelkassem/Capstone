@@ -83,7 +83,7 @@ public class SignUpActivity extends AppCompatActivity {
     public Uri getImageUri(Context inContext, Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, getString(R.string.title), null);
         return Uri.parse(path);
     }
 
@@ -113,11 +113,11 @@ public class SignUpActivity extends AppCompatActivity {
                 imageUriForFirebase = imageUri;
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, R.string.somethingwentwrong, Toast.LENGTH_LONG).show();
             }
 
         } else {
-            Toast.makeText(this, "You haven't picked Image", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.youhaventpickedimage, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -162,7 +162,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailed() {
-                        Toast.makeText(SignUpActivity.this, "request permission failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignUpActivity.this, R.string.requestpermissionfailed, Toast.LENGTH_SHORT).show();
                     }
                 });
                 break;
@@ -182,7 +182,7 @@ public class SignUpActivity extends AppCompatActivity {
                 boolean gate = true;
                 for (UserModel userModel : MainActivity.getUserModels()) {
                     if (userModel.getmEmail().equals(signUpEmail.getText().toString()) || userModel.getmUserName().equals(signUpUserName.getText().toString())) {
-                        Toast.makeText(this, "you have registered before", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, R.string.youhaveregisteredbefore, Toast.LENGTH_SHORT).show();
                         finish();
                         MainActivity.start(this);
                         gate = false;
@@ -190,7 +190,7 @@ public class SignUpActivity extends AppCompatActivity {
                     }
                 }
                 if (gate) {
-                    Toast.makeText(this, "Wait to upload the Image", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.waittouploadimage, Toast.LENGTH_SHORT).show();
                     if (imageUriForFirebase == null) {
                         imageUriForFirebase = Uri.parse("android.resource://com.example.android.lovemeter/" + R.drawable.love_meter);
                     }

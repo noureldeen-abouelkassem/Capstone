@@ -35,7 +35,7 @@ public class BoardActivity extends AppCompatActivity {
 
     public static void start(Context context, String userEmail) {
         Intent starter = new Intent(context, BoardActivity.class);
-        starter.putExtra("userEmail", userEmail);
+        starter.putExtra(context.getString(R.string.useremail), userEmail);
         context.startActivity(starter);
     }
 
@@ -46,7 +46,7 @@ public class BoardActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         Intent intent = getIntent();
         if (intent != null) {
-            userEmail = intent.getStringExtra("userEmail");
+            userEmail = intent.getStringExtra(getString(R.string.useremail));
         }
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getReference("users");

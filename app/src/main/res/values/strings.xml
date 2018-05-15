@@ -18,4 +18,22 @@
     <string name="addLastQuestion">ADD LAST QUESTION</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="testnumber">testNumber</string>
+    <string name="useremail">userEmail</string>
+    <string name="testername">testerName</string>
+    <string name="users">users</string>
+    <string name="tests">tests</string>
+    <string name="youshouldanswerthequestion">You should answer the question !</string>
+    <string name="showresult">Show Result !</string>
+    <string name="youloveyourfriend">you love your friend</string>
+    <string name="percentage">%</string>
+    <string name="profilepicture">profilePicture</string>
+    <string name="title">Title</string>
+    <string name="somethingwentwrong">Something went wrong</string>
+    <string name="youhaventpickedimage">You haven\'t picked Image</string>
+    <string name="requestpermissionfailed">request permission failed</string>
+    <string name="youhaveregisteredbefore">you have registered before</string>
+    <string name="waittouploadimage">Wait to upload the Image</string>
+    <string name="youshouldprovidequestionandanswer">You should provide a question and an answer</string>
+    <string name="usernameorpasswordiswrong">username or password is wrong</string>
 </resources>

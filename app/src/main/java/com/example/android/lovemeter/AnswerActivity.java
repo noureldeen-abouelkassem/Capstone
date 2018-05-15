@@ -77,9 +77,9 @@ public class AnswerActivity extends AppCompatActivity {
 
     public static void start(Context context, String testNumber, String userEmail, String testerName) {
         Intent starter = new Intent(context, AnswerActivity.class);
-        starter.putExtra("testNumber", testNumber);
-        starter.putExtra("userEmail", userEmail);
-        starter.putExtra("testerName", testerName);
+        starter.putExtra(context.getString(R.string.testnumber), testNumber);
+        starter.putExtra(context.getString(R.string.useremail), userEmail);
+        starter.putExtra(context.getString(R.string.testername), testerName);
         context.startActivity(starter);
     }
 
@@ -90,13 +90,13 @@ public class AnswerActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         Intent intent = getIntent();
         if (intent != null) {
-            testNumber = intent.getStringExtra("testNumber");
-            testerName = intent.getStringExtra("testerName");
-            userEmail = intent.getStringExtra("userEmail");
+            testNumber = intent.getStringExtra(getString(R.string.testnumber));
+            testerName = intent.getStringExtra(getString(R.string.testername));
+            userEmail = intent.getStringExtra(getString(R.string.useremail));
             testerName = testerName.replace("(NEW)","");
         }
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference = mFirebaseDatabase.getReference("users");
+        mDatabaseReference = mFirebaseDatabase.getReference(getString(R.string.users));
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -104,7 +104,7 @@ public class AnswerActivity extends AppCompatActivity {
                     UserModel userModel = local.getValue(UserModel.class);
                     if (userModel.getmEmail().equals(userEmail)) {
                         for (int i = 1; i <= 10; i++) {
-                            QuestionModel questionModel = local.child("tests").child(testNumber).getChildren().iterator().next().child(String.valueOf(i)).getValue(QuestionModel.class);
+                            QuestionModel questionModel = local.child(getString(R.string.tests)).child(testNumber).getChildren().iterator().next().child(String.valueOf(i)).getValue(QuestionModel.class);
                             questionModels.add(questionModel);
 
                         }
@@ -136,7 +136,7 @@ public class AnswerActivity extends AppCompatActivity {
                 setCounter(getCounter() + 1);
                 tvQuestion.setText(questionModels.get(counter).getQuestion());
             } else if (!(rbYes.isChecked()) && !(rbNo.isChecked())) {
-                Toast.makeText(this, "You should answer the question !", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.youshouldanswerthequestion, Toast.LENGTH_SHORT).show();
             } else if ((questionModels.get(getCounter()).getAnswer().equals("0") && rbYes.isChecked()) || (questionModels.get(getCounter()).getAnswer().equals("1") && rbNo.isChecked())) {
                 setCounter(getCounter() + 1);
                 tvQuestion.setText(questionModels.get(counter).getQuestion());
@@ -144,7 +144,7 @@ public class AnswerActivity extends AppCompatActivity {
             rgYesNo.clearCheck();
         }else if(getCounter()==9){
             if(!(rbYes.isChecked()) && !(rbNo.isChecked())){
-                Toast.makeText(this, "You should answer the question !", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.youshouldanswerthequestion), Toast.LENGTH_SHORT).show();
             }else {
                 if (questionModels.get(getCounter()).getAnswer().equals("1") && rbYes.isChecked()) {
                     testResult += 1;
@@ -157,10 +157,10 @@ public class AnswerActivity extends AppCompatActivity {
                 }
                 rgYesNo.clearCheck();
                 tvQuestion.setText("");
-                btnAnswer.setText("Show Result !");
+                btnAnswer.setText(R.string.showresult);
             }
         }else {
-            tvQuestion.setText("you love your friend" + " " + testerName + " " + String.valueOf(calcResult(testResult)) + " %");
+            tvQuestion.setText(getString(R.string.youloveyourfriend) + " " + testerName + " " + String.valueOf(calcResult(testResult)) + getString(R.string.percentage));
             ContentValues contentValues = new ContentValues();
             contentValues.put(ResultsContract.ResultEntry.COLUMN_TESTER_NAME, getTesterName());
             contentValues.put(ResultsContract.ResultEntry.COLUMN_TEST_NAME, getTestNumber());

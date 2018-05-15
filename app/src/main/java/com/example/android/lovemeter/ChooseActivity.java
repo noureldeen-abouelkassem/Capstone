@@ -37,10 +37,10 @@ public class ChooseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_choose);
         ButterKnife.bind(this);
         Intent intent = getIntent();
-        if (intent != null && intent.getStringExtra("profilePicture") != null) {
-            Glide.with(this).load(Uri.parse(intent.getStringExtra("profilePicture"))).into(imageView);
+        if (intent != null && intent.getStringExtra(getString(R.string.profilepicture)) != null) {
+            Glide.with(this).load(Uri.parse(intent.getStringExtra(getString(R.string.profilepicture)))).into(imageView);
             imageView.setRotation(90);
-            userEmail = intent.getStringExtra("userEmail");
+            userEmail = intent.getStringExtra(getString(R.string.useremail));
         }
     }
 

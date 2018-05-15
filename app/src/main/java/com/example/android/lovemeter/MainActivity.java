@@ -2,6 +2,7 @@ package com.example.android.lovemeter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -50,28 +51,35 @@ public class MainActivity extends AppCompatActivity {
         Intent starter = new Intent(context, MainActivity.class);
         context.startActivity(starter);
     }
+    private class MyAsyncTask extends AsyncTask<Void,Void,Void>{
 
+        @Override
+        protected Void doInBackground(Void... voids) {
+            mfirebaseDatabase = FirebaseDatabase.getInstance();
+            mdatabaseReference = mfirebaseDatabase.getReference("users");
+            mdatabaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot local : dataSnapshot.getChildren()) {
+                        UserModel userModel = local.getValue(UserModel.class);
+                        userModels.add(userModel);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+            return null;
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        mfirebaseDatabase = FirebaseDatabase.getInstance();
-        mdatabaseReference = mfirebaseDatabase.getReference("users");
-        mdatabaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot local : dataSnapshot.getChildren()) {
-                    UserModel userModel = local.getValue(UserModel.class);
-                    userModels.add(userModel);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        new MyAsyncTask().execute();
     }
 
     @OnClick({R.id.main_activity_btn_logIn, R.id.main_activity_tv_signUp})
@@ -87,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 if ((localUserModel.getmPassword() != null) &&localUserModel.getmPassword().equals(mainActivityEtPassword.getText().toString())) {
                     ChooseActivity.start(this,localUserModel.getmProfilePicture(),localUserModel.getmEmail());
                 }else{
-                    Toast.makeText(this, "username or password is wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.usernameorpasswordiswrong, Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.main_activity_tv_signUp:
